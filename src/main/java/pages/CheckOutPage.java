@@ -1,5 +1,6 @@
 package pages;
 
+import dto.Customer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,10 +16,16 @@ public class CheckOutPage extends BasePage{
     By continueButton = By.id("continue");
     By errorMessage = By.xpath("//h3[@data-test = 'error']");
 
-    public CheckOutPage fillForm (String firstName, String lastName, String zip) {
-        driver.findElement(firstNameField).sendKeys(firstName);
-        driver.findElement(lastNameField).sendKeys(lastName);
-        driver.findElement(zipField).sendKeys(zip);
+    @Override
+    public CheckOutPage isPageOpened() {
+        waitElement(continueButton);
+        return this;
+    }
+
+    public CheckOutPage fillForm (Customer customer) {
+        driver.findElement(firstNameField).sendKeys(customer.getFirstName());
+        driver.findElement(lastNameField).sendKeys(customer.getLastName());
+        driver.findElement(zipField).sendKeys(customer.getZipCode());
         return this;
     }
 

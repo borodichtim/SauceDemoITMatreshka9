@@ -17,7 +17,7 @@ public class LoginTest extends BaseTest{
     public void checkLoginWithEmptyUsername() {
         loginPage.openPage();
         loginPage.login("", "secret_sauce");
-        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is required");
+        Assert.assertEquals(loginPage.getErrorMessage(), "Epic sadface: Username is ");
     }
 
     @Test
